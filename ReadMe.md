@@ -33,13 +33,13 @@ Also the CHIP-8 has more keys then the Game Boy so we have to define the key bin
 
 ### Registers
 
-The original CHIP-8 on the Cosmac VIP had 16 general purpose registers which we're stored directly in the CPU's 16 registers. The Game Boy doesn't have as many registers so instead I put all the CHIP-8 registers into HRAM (along with any other variables) to use `ldh a, [c]` and `ldh [c], a` to quickly retrieve and set them.
+The original CHIP-8 on the Cosmac VIP had 16 general purpose registers which were stored directly in the CPU's 16 registers. The Game Boy doesn't have as many registers so instead I put all the CHIP-8 registers into HRAM (along with any other variables) to use `ldh a, [c]` and `ldh [c], a` to quickly retrieve and set them.
 
 ### Framerate
 
-The interpreter will run as many instructions as it can every frame, and because each instruction has a varing length there isn't a set number on how many instructions can run each frame. But this isn't a big deal as I haven't had the program run to slow.
+The interpreter will run as many instructions as it can every frame, and because each instruction has a varing length there isn't a set number on how many instructions can run each frame. But this isn't a big deal as I haven't had the program run too slow.
 
-Also because the interpreter tries to run as many instructions as possible the cpu never turns.
+Also because the interpreter tries to run as many instructions as possible the cpu never turns off.
 
 ### Display
 
@@ -51,7 +51,7 @@ To avoid screen tearing any instruction that edits the display (`00E0` and `DXYN
 
 As stated before the CHIP-8 has 16 keys numbered `0`-`F` and the Game Boy only has 8 so we need to set key binds.
 
-The VBlank routine is to tight to read the down keys then so they're instead read whenever an instruction needs.
+The VBlank routine is too tight to read the down keys then so they're instead read whenever an instruction needs them.
 
 ### Quirks
 
